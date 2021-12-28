@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { InputGroup, Form } from "react-bootstrap";
-import FormControl from 'react-bootstrap/FormControl';
+import { InputGroup } from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import Room from "../Room/Room";
 import Loader from "../Loader";
@@ -109,7 +109,7 @@ export default function HomeScreen() {
         </Col>
         <Col className="mt-5">
           <InputGroup size="sm" className="mb-3">
-            <FormControl
+            <Form.Control
               type="text"
               placeholder="Search Rooms"
               value={searchkey}

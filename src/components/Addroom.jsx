@@ -7,7 +7,7 @@ import {
   Button,
   Container,
 } from "react-bootstrap";
-import FormControl from 'react-bootstrap/FormControl'
+import Form from 'react-bootstrap/Form'
 import axios from "axios";
 import Success from "./Success";
 import Loader from "./Loader";
@@ -71,7 +71,7 @@ export default function Addroom() {
         <Col>
           <InputGroup size="sm" className="mb-3">
             <InputGroup.Text id="inputGroup-sizing-sm">Name</InputGroup.Text>
-            <FormControl
+            <Form.Control
               required
               placeholder="Room name"
               value={name}
@@ -85,7 +85,7 @@ export default function Addroom() {
             <InputGroup.Text id="inputGroup-sizing-sm">
               Rent /day
             </InputGroup.Text>
-            <FormControl
+            <Form.Control
               required
               placeholder="Rent per day"
               value={rentperday}
@@ -99,7 +99,7 @@ export default function Addroom() {
             <InputGroup.Text id="inputGroup-sizing-sm">
               max Days
             </InputGroup.Text>
-            <FormControl
+            <Form.Control
               required
               placeholder="maximum days"
               value={maxdays}
@@ -113,7 +113,7 @@ export default function Addroom() {
             <InputGroup.Text id="inputGroup-sizing-sm">
               description
             </InputGroup.Text>
-            <FormControl
+            <Form.Control
               required
               placeholder="Description"
               value={description}
@@ -127,7 +127,7 @@ export default function Addroom() {
             <InputGroup.Text id="inputGroup-sizing-sm">
               Phone Number
             </InputGroup.Text>
-            <FormControl
+            <Form.Control
               required
               placeholder="Mobile Number"
               value={phonenumber}
@@ -140,7 +140,7 @@ export default function Addroom() {
         <Col>
           <InputGroup size="sm" className="mb-3">
             <InputGroup.Text id="inputGroup-sizing-sm">Type</InputGroup.Text>
-            <FormControl
+            <Form.Control
               required
               placeholder="Room type"
               value={type}
@@ -151,7 +151,7 @@ export default function Addroom() {
           </InputGroup>
           <InputGroup size="sm" className="mb-3">
             <InputGroup.Text id="inputGroup-sizing-sm">Img 1</InputGroup.Text>
-            <FormControl
+            <Form.Control
               required
               placeholder="image1"
               value={imageurl1}
@@ -162,7 +162,7 @@ export default function Addroom() {
           </InputGroup>
           <InputGroup size="sm" className="mb-3">
             <InputGroup.Text id="inputGroup-sizing-sm">Img 2</InputGroup.Text>
-            <FormControl
+            <Form.Control
               required
               placeholder="image2"
               value={imageurl2}
@@ -173,7 +173,7 @@ export default function Addroom() {
           </InputGroup>
           <InputGroup size="sm" className="mb-3">
             <InputGroup.Text id="inputGroup-sizing-sm">Img 3</InputGroup.Text>
-            <FormControl
+            <Form.Control
               required
               placeholder="image3"
               value={imageurl3}
