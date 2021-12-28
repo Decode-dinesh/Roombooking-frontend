@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { InputGroup, FormControl } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
+import { InputGroup, Form } from "react-bootstrap";
+import FormControl from 'react-bootstrap/FormControl';
 import axios from "axios";
 import Room from "../Room/Room";
 import Loader from "../Loader";
