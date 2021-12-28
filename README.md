@@ -5,12 +5,12 @@ https://flamboyant-noether-52e1c8.netlify.app/
 
 
 # 𝗔𝗱𝗺𝗶𝗻 𝗟𝗼𝗴𝗶𝗻
-email : john@gmail.com || andrew@gmail.com
-password : 123456      || 123456
+Email : john@gmail.com (or) andrew@gmail.com
+password : 123456
 
 
 # user login
-email : user@gmail.com 
+Email : user@gmail.com 
 password : 123456
 
 
