@@ -1,6 +1,7 @@
+import { Input } from "antd";
 import React from "react";
 import { Button } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
 
 export default function Editroom({
   editFormData,
@@ -10,7 +11,7 @@ export default function Editroom({
   return (
     <tr key={editFormData._id}>
       <td>
-        <Form.Control
+        <Input
           type="text"
           required="required"
           placeholder="enter name"
@@ -20,7 +21,7 @@ export default function Editroom({
         />
       </td>
       <td>
-        <Form.Control
+        <Input
           type="text"
           required="required"
           placeholder="enter number"
@@ -30,7 +31,7 @@ export default function Editroom({
         />
       </td>
       <td>
-        <Form.Control
+        <Input
           type="text"
           required="required"
           placeholder="enter type"
@@ -40,7 +41,7 @@ export default function Editroom({
         />
       </td>
       <td>
-        <Form.Control
+        <Input
           type="text"
           required="required"
           placeholder="enter rent"
@@ -50,7 +51,7 @@ export default function Editroom({
         />
       </td>
       <td>
-        <Form.Control
+        <Input
           type="text"
           required="required"
           placeholder="enter max booking"
