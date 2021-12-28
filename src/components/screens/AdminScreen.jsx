@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Container, Row, Col, Table, Form } from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
 import { Tabs } from "antd";
 import axios from "axios";
 import Loader from "../Loader";

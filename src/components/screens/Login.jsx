@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
+import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import Error from "../Error";
 import Loder from "../Loader";
