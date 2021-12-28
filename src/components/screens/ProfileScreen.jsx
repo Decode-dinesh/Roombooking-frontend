@@ -4,7 +4,6 @@ import { Tabs } from "antd";
 import { Container, Row, Col, Button, Badge } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Loader from "../Loader";
 
 const { TabPane } = Tabs;
 
@@ -39,32 +38,27 @@ export function MyBookings() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   const [bookings, setBookings] = useState([]);
 
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchMyApi(){
       try {
-        setLoading(true);
-        const data = (
-          await axios.post("https://room-booking-backend.herokuapp.com/bookings/getbookingbyuserid", {
-            userid: user._id,
-          })
-        ).data;
+      
+        const data = (await axios.post("https://room-booking-backend.herokuapp.com/bookings/getbookingbyuserid", {userid: user._id})).data;
         setBookings(data);
-        setLoading(false);
+      
       } catch (err) {
         console.log(err);
-        setLoading(false);
+      
   
       }
     }
     fetchMyApi();
 
-  },[]);
+  },[user]);
 
   async function cancelBooking(bookingid, roomid) {
     try {
-      setLoading(true);
+      
       const data = (
         await axios.post("https://room-booking-backend.herokuapp.com/bookings/cancelbooking", {
           bookingid,
@@ -72,10 +66,10 @@ export function MyBookings() {
         })
       ).data;
       console.log(data);
-      setLoading(false);
+  
     } catch (err) {
       console.log(err);
-      setLoading(false);
+    
     }
   }
 
@@ -83,7 +77,7 @@ export function MyBookings() {
     <Container>
       <Row>
         <Col>
-          {loading && <Loader />}
+      
           {bookings &&
             bookings.map((booking) => {
               return (

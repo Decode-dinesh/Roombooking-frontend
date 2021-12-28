@@ -10,7 +10,7 @@ export default function Bookingscreen({ match }) {
   const [loading, setLoading] = useState(true);
   
 
-  // const roomid = match.params.roomid
+  // const roomid = match.params.roomid;
   const fromdate = moment(match.params.fromdate, "DD-MM-YYYY");
   const todate = moment(match.params.todate, "DD-MM-YYYY");
 
@@ -39,7 +39,7 @@ export default function Bookingscreen({ match }) {
       }
     }
     fetchMyApi();
-  },[]);
+  },[match.params.roomid, totaldays]);
 
   async function bookRoom() {
     const bookingDetails = {
