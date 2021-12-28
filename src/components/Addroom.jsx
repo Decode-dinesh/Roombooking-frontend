@@ -4,10 +4,10 @@ import {
   Row,
   InputGroup,
   Col,
-  FormControl,
   Button,
   Container,
 } from "react-bootstrap";
+import FormControl from 'react-bootstrap/FormControl'
 import axios from "axios";
 import Success from "./Success";
 import Loader from "./Loader";
