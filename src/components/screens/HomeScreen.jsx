@@ -5,8 +5,8 @@ import Form from 'react-bootstrap/Form';
 import axios from "axios";
 import Room from "../Room/Room";
 import Loader from "../Loader";
-
 import moment from "moment";
+import "antd/dist/antd.css";
 import { DatePicker, Space } from "antd";
 
 const { RangePicker } = DatePicker;
@@ -77,6 +77,11 @@ export default function HomeScreen() {
     }
   }
 
+  function disabledDate(current) {
+    // Can not select days before today and today
+    return current && current < moment().endOf('day');
+  }
+
   function filterBySearch() {
 
     const temprooms = duplicaterooms.filter(rooms => rooms.name.toLowerCase().includes(searchkey.toLowerCase()))
@@ -102,9 +107,8 @@ export default function HomeScreen() {
     <Container>
       <Row>
         <Col className="mt-5">
-          <Space direction="vertical" size={15}>
-            <RangePicker format="DD-MM-YYYY" onChange={filterByDate} />
-         
+          <Space>
+              <RangePicker disabledDate={disabledDate} format="DD-MM-YYYY" onChange={filterByDate} />
           </Space>
         </Col>
         <Col className="mt-5">
