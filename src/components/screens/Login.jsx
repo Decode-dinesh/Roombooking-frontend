@@ -41,7 +41,7 @@ export default function Login() {
         <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
           <Form.Control
-            className="w-50"
+            // className="w-50"
             required
             type="email"
             placeholder="Enter email"
