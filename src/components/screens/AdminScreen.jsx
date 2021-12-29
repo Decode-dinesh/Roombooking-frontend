@@ -47,7 +47,7 @@ export function Bookings() {
     async function fetchMyApi(){
         try {
           const data = (
-            await axios.get("https://room-booking-backend.herokuapp.com/bookings/getallbookings")
+            await axios.get("http://localhost:8800/bookings/getallbookings")
           ).data;
           setBookings(data);
           setLoading(false);
@@ -60,7 +60,7 @@ export function Bookings() {
   },[]);
 
   return (
-    <Container>
+    <>
       <Row>
         <Col>
           Bookings
@@ -68,8 +68,8 @@ export function Bookings() {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th><h2>Booking id</h2></th>
-                <th><h2>User id</h2></th>
+                {/* <th><h2>Booking id</h2></th>
+                <th><h2>User id</h2></th> */}
                 <th><h2>Room</h2></th>
                 <th><h2>From</h2></th>
                 <th><h2>To</h2></th>
@@ -81,8 +81,8 @@ export function Bookings() {
                 bookings.map((booking) => {
                   return (
                     <tr key={booking._id}>
-                      <td><h5>{booking._id}</h5></td>
-                      <td><h5>{booking.userid}</h5></td>
+                      {/* <td><h5>{booking._id}</h5></td>
+                      <td><h5>{booking.userid}</h5></td> */}
                       <td><h5>{booking.room}</h5></td>
                       <td><h5>{booking.fromdate}</h5></td>
                       <td><h5>{booking.todate}</h5></td>
@@ -95,7 +95,7 @@ export function Bookings() {
           
         </Col>
       </Row>
-    </Container>
+    </>
   );
 }
 
@@ -116,7 +116,7 @@ export function Rooms() {
   useEffect(() => {
     async function fetchMyApi(){
       try {
-        const data = (await axios.get("https://room-booking-backend.herokuapp.com/room/getallrooms")).data;
+        const data = (await axios.get("http://localhost:8800/room/getallrooms")).data;
         setRooms(data);
         setLoading(false);
       } catch (err) {
@@ -169,7 +169,7 @@ export function Rooms() {
     console.warn(editedRoom);
     try {
       const res = await axios.put(
-        `https://room-booking-backend.herokuapp.com/room/edit/${roomid}`,
+        `http://localhost:8800/room/edit/${roomid}`,
         editedRoom
       ).data;
       console.log(res);
@@ -189,7 +189,7 @@ export function Rooms() {
 
   async function handleDeleteClick(id) {
     try {
-      const result = await axios.delete(`https://room-booking-backend.herokuapp.com/room/${id}`);
+      const result = await axios.delete(`http://localhost:8800/room/${id}`);
       console.log(result)
       let temproom = [...rooms];
       let newroom = temproom.filter((room) => {
@@ -203,7 +203,7 @@ export function Rooms() {
   }
 
   return (
-    <Container>
+    <>
       <Row>
         <Col>
           <Form onSubmit={handleEditFormSubmit}>
@@ -246,7 +246,7 @@ export function Rooms() {
           </Form>
         </Col>
       </Row>
-    </Container>
+    </>
   );
 }
 
@@ -258,7 +258,7 @@ export function Users() {
   useEffect(() => {
     async function fetchMyApi(){
       try {
-        const data = (await axios.get("https://room-booking-backend.herokuapp.com/user/allusers"))
+        const data = (await axios.get("http://localhost:8800/user/allusers"))
           .data;
         setUsers(data);
         setLoading(false);
@@ -271,7 +271,7 @@ export function Users() {
   }, []);
 
   return (
-    <Container>
+    <>
       <Row>
         <Col>
           Users
@@ -279,7 +279,7 @@ export function Users() {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>User id</th>
+          
                 <th>Name</th>
                 <th>Email</th>
                 <th>isAdmin</th>
@@ -290,7 +290,7 @@ export function Users() {
                 users.map((user) => {
                   return (
                     <tr key={user._id}>
-                      <td>{user._id}</td>
+              
                       <td>{user.name}</td>
                       <td>{user.email}</td>
                       <td>{user.isAdmin ? "Yes" : "No"}</td>
@@ -301,6 +301,6 @@ export function Users() {
           </Table>
         </Col>
       </Row>
-    </Container>
+    </>
   );
 }

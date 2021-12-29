@@ -30,7 +30,7 @@ export default function Register() {
       try {
         setLoading(true);
         const result = await axios.post(
-          "https://room-booking-backend.herokuapp.com/user/register",
+          "http://localhost:8800/user/register",
           user
         ).data;
         console.log(result)
@@ -52,7 +52,7 @@ export default function Register() {
   }
 
   return (
-    <Container className="mt-5 w-50">
+    <Container className="mt-5">
       {loading && <Loader />}
       {error && <Error />}
       {success && <Success message="Register successful" />}
@@ -89,7 +89,7 @@ export default function Register() {
           <Form.Control
             className="w-50"
             type="text"
-            placeholder="Name"
+            placeholder="Number"
             value={mobile}
             onChange={(e) => {
               setMobile(e.target.value);

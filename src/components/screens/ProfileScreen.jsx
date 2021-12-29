@@ -43,7 +43,7 @@ export function MyBookings() {
     async function fetchMyApi(){
       try {
       
-        const data = (await axios.post("https://room-booking-backend.herokuapp.com/bookings/getbookingbyuserid", {userid: user._id})).data;
+        const data = (await axios.post("http://localhost:8800/bookings/getbookingbyuserid", {userid: user._id})).data;
         setBookings(data);
       
       } catch (err) {
@@ -60,7 +60,7 @@ export function MyBookings() {
     try {
       
       const data = (
-        await axios.post("https://room-booking-backend.herokuapp.com/bookings/cancelbooking", {
+        await axios.post("http://localhost:8800/bookings/cancelbooking", {
           bookingid,
           roomid,
         })

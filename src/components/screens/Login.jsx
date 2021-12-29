@@ -20,7 +20,7 @@ export default function Login() {
     try {
       setLoading(true);
       const result = (
-        await axios.post("https://room-booking-backend.herokuapp.com/user/login", user)
+        await axios.post("http://localhost:8800/user/login", user)
       ).data;
       setLoading(false);
 
@@ -34,7 +34,7 @@ export default function Login() {
   }
 
   return (
-    <Container className="mt-5 w-50">
+    <Container className="mt-5">
       {loading && <Loder />}
       <Form>
         {error && <Error message="Invalid credentials" />}

@@ -27,7 +27,7 @@ export default function HomeScreen() {
     async function fetchMyApi(){
       try {
         setLoading(true);
-        const data = (await axios.get("https://room-booking-backend.herokuapp.com/room/getallrooms")).data;
+        const data = (await axios.get("http://localhost:8800/room/getallrooms")).data;
         setRooms(data);
         setDuplicaterooms(data);
         setLoading(false);
@@ -133,17 +133,17 @@ export default function HomeScreen() {
         </Col>
       </Row>
 
-      <Row className="justify-content-center mt-5">
+      <Row className="mt-5">
         {loading ? (
           <Loader />
         ) : (
-          rooms.map((room) => {
+          <Col className="mt-2">
+          {rooms.map((room) => {
             return (
-              <Col className="col-md-9 mt-2" key={room._id}>
                 <Room room={room} fromdate={fromdate} todate={todate} />
+                );
+              })}
               </Col>
-            );
-          })
         ) }
       </Row>
     </Container>

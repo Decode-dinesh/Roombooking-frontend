@@ -23,7 +23,7 @@ export default function Bookingscreen({ match }) {
       try {
         setLoading(true);
         const data = (
-          await axios.post("https://room-booking-backend.herokuapp.com/room/getroombyid", { roomid: match.params.roomid })
+          await axios.post("http://localhost:8800/room/getroombyid", { roomid: match.params.roomid })
         ).data;
         setTotalamount(
           totaldays <= data.maxdays
@@ -53,7 +53,7 @@ export default function Bookingscreen({ match }) {
 
     try {
       const result = await axios.post(
-        "https://room-booking-backend.herokuapp.com/bookings/bookroom",
+        "http://localhost:8800/bookings/bookroom",
         bookingDetails
       );
       window.location.href = "/profile";
