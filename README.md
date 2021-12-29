@@ -1,6 +1,25 @@
 # Getting Started with Create React App
 
+# deployed link
+https://flamboyant-noether-52e1c8.netlify.app/
+
+
+# 𝗔𝗱𝗺𝗶𝗻 𝗟𝗼𝗴𝗶𝗻
+Email : john@gmail.com (or) andrew@gmail.com
+password : 123456
+
+
+# user login
+Email : user@gmail.com 
+password : 123456
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+# demo gif 
+
+![roombooking](https://user-images.githubusercontent.com/80633667/147569777-b38eafba-b66f-454d-ab8e-2448183c762a.gif)
 
 ## Available Scripts
 
