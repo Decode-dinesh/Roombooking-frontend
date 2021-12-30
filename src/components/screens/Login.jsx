@@ -20,7 +20,7 @@ export default function Login() {
     try {
       setLoading(true);
       const result = (
-        await axios.post("http://localhost:8800/user/login", user)
+        await axios.post("https://room-booking-backend.herokuapp.com/user/login", user)
       ).data;
       setLoading(false);
 
