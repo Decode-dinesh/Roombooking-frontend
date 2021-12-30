@@ -83,10 +83,10 @@ export function Bookings() {
                     <tr key={booking._id}>
                       {/* <td><h5>{booking._id}</h5></td>
                       <td><h5>{booking.userid}</h5></td> */}
-                      <td><h5>{booking.room}</h5></td>
-                      <td><h5>{booking.fromdate}</h5></td>
-                      <td><h5>{booking.todate}</h5></td>
-                      <td><h5>{booking.status}</h5></td>
+                      <td><h6>{booking.room}</h6></td>
+                      <td><h6>{booking.fromdate}</h6></td>
+                      <td><h6>{booking.todate}</h6></td>
+                      <td><h6>{booking.status}</h6></td>
                     </tr>
                   );
                 })}
@@ -291,9 +291,9 @@ export function Users() {
                   return (
                     <tr key={user._id}>
               
-                      <td>{user.name}</td>
-                      <td>{user.email}</td>
-                      <td>{user.isAdmin ? "Yes" : "No"}</td>
+                      <td><h6>{user.name}</h6></td>
+                      <td><h6>{user.email}</h6></td>
+                      <td><h6>{user.isAdmin ? "Yes" : "No"}</h6></td>
                     </tr>
                   );
                 })}
