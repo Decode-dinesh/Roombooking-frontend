@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 
 export default function Readroom({ room, handleEditClick, handleDeleteClick }) {
   return (
-    <tr key={room._id}>
+    <tr key={room.updatedAt}>
       <td>{room.name}</td>
       <td>{room.phonenumber}</td>
       <td>{room.type}</td>

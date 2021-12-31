@@ -27,7 +27,7 @@ export default function HomeScreen() {
     async function fetchMyApi(){
       try {
         setLoading(true);
-        const result = (await axios.get("/room/getallrooms")).data;
+        const result = (await axios.get("https://room-booking-backend.herokuapp.com/room/getallrooms")).data;
         setRooms(result);
         setDuplicaterooms(result);
         setLoading(false);
