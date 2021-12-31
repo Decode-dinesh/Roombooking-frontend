@@ -76,7 +76,7 @@ export default function HomeScreen() {
           }
         }
       }
-      if (availability == true || rooms.currentbookings.length == 0){
+      if (availability === true || rooms.currentbookings.length === 0){
         temprooms.push(rooms);
         console.log(temprooms);
       }
