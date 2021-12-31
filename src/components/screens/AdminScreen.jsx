@@ -47,7 +47,7 @@ export function Bookings() {
     async function fetchMyApi(){
         try {
           const data = (
-            await axios.get("https://room-booking-backend.herokuapp.com/bookings/getallbookings")
+            await axios.get("/bookings/getallbookings")
           ).data;
           setBookings(data);
           setLoading(false);
@@ -116,7 +116,7 @@ export function Rooms() {
   useEffect(() => {
     async function fetchMyApi(){
       try {
-        const data = (await axios.get("https://room-booking-backend.herokuapp.com/room/getallrooms")).data;
+        const data = (await axios.get("/room/getallrooms")).data;
         setRooms(data);
         setLoading(false);
       } catch (err) {
@@ -169,7 +169,7 @@ export function Rooms() {
     console.warn(editedRoom);
     try {
       const res = await axios.put(
-        `https://room-booking-backend.herokuapp.com/room/edit/${roomid}`,
+        `/room/edit/${roomid}`,
         editedRoom
       ).data;
       console.log(res);
@@ -189,7 +189,7 @@ export function Rooms() {
 
   async function handleDeleteClick(id) {
     try {
-      const result = await axios.delete(`https://room-booking-backend.herokuapp.com/room/${id}`);
+      const result = await axios.delete(`/room/${id}`);
       console.log(result)
       let temproom = [...rooms];
       let newroom = temproom.filter((room) => {
@@ -258,7 +258,7 @@ export function Users() {
   useEffect(() => {
     async function fetchMyApi(){
       try {
-        const data = (await axios.get("https://room-booking-backend.herokuapp.com/user/allusers"))
+        const data = (await axios.get("/user/allusers"))
           .data;
         setUsers(data);
         setLoading(false);
