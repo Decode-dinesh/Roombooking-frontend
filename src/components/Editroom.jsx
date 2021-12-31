@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import FormControl from 'react-bootstrap/FormControl';
+import FormControl from "react-bootstrap/FormControl";
 
 export default function Editroom({
   editFormData,

@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-export default function Error({message}) {
-    return (
-        <div>
-            <div className ="alert alert-danger" role="alert">
-                {message}
-            </div>
-        </div>
-    )
+export default function Error({ message }) {
+  return (
+    <div>
+      <div className="alert alert-danger" role="alert">
+        {message}
+      </div>
+    </div>
+  );
 }

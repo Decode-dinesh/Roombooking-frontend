@@ -1,13 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import {
-  Row,
-  InputGroup,
-  Col,
-  Button,
-  Container,
-} from "react-bootstrap";
-import Form from 'react-bootstrap/Form'
+import { Row, InputGroup, Col, Button, Container } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 import axios from "axios";
 import Success from "./Success";
 import Loader from "./Loader";
@@ -28,7 +22,8 @@ export default function Addroom() {
   const [loading, setLoading] = useState();
   const [error, setError] = useState();
 
-  async function addroom() {
+  async function addroom(e) {
+    e.preventDefault();
     const newroom = {
       name,
       rentperday,
@@ -41,8 +36,7 @@ export default function Addroom() {
 
     try {
       setLoading(true);
-      const result = await axios.post("https://room-booking-backend.herokuapp.com/room/addroom", newroom)
-        .data;
+      const result = await axios.post("/room/addroom", newroom).data;
       setLoading(false);
       setSuccess(true);
       setName("");

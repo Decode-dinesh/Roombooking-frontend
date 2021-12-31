@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 import axios from "axios";
 import Error from "../Error";
 import Loder from "../Loader";
@@ -19,9 +19,7 @@ export default function Login() {
     };
     try {
       setLoading(true);
-      const result = (
-        await axios.post("https://room-booking-backend.herokuapp.com/user/login", user)
-      ).data;
+      const result = (await axios.post("/user/login", user)).data;
       setLoading(false);
 
       localStorage.setItem("currentUser", JSON.stringify(result));

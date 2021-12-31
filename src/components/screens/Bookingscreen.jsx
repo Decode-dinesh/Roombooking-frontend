@@ -8,7 +8,6 @@ import moment from "moment";
 export default function Bookingscreen({ match }) {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
-  
 
   // const roomid = match.params.roomid;
   const fromdate = moment.utc(match.params.fromdate, "DD-MM-YYYY");
@@ -21,11 +20,11 @@ export default function Bookingscreen({ match }) {
   const [totalamount, setTotalamount] = useState();
 
   useEffect(() => {
-    async function fetchMyApi(){
+    async function fetchMyApi() {
       try {
         setLoading(true);
         const data = (
-          await axios.post("https://room-booking-backend.herokuapp.com/room/getroombyid", { roomid: match.params.roomid })
+          await axios.post("/room/getroombyid", { roomid: match.params.roomid })
         ).data;
         setTotalamount(
           totaldays <= data.maxdays
@@ -37,14 +36,12 @@ export default function Bookingscreen({ match }) {
       } catch (err) {
         console.log(err);
         setLoading(false);
-    
       }
     }
     fetchMyApi();
-  },[match.params.roomid, totaldays]);
+  }, [match.params.roomid, totaldays]);
 
   async function bookRoom() {
-  
     const bookingDetails = {
       rooms,
       userid: JSON.parse(localStorage.getItem("currentUser"))._id,
@@ -55,12 +52,9 @@ export default function Bookingscreen({ match }) {
     };
 
     try {
-      const result = await axios.post(
-        "https://room-booking-backend.herokuapp.com/bookings/bookroom",
-        bookingDetails
-      );
+      const result = await axios.post("/bookings/bookroom", bookingDetails);
       window.location.href = "/profile";
-      console.log(result)
+      console.log(result);
     } catch (err) {
       console.log(err);
     }

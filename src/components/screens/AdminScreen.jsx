@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Container, Row, Col, Table } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 import { Tabs } from "antd";
 import axios from "axios";
 import Loader from "../Loader";
@@ -42,38 +42,43 @@ export function Bookings() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
-
   useEffect(() => {
-    async function fetchMyApi(){
-        try {
-          const data = (
-            await axios.get("/bookings/getallbookings")
-          ).data;
-          setBookings(data);
-          setLoading(false);
-        } catch (err) {
-          console.log(err);
-          setLoading(false);
-        }
+    async function fetchMyApi() {
+      try {
+        const data = (await axios.get("/bookings/getallbookings")).data;
+        setBookings(data);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
     }
-    fetchMyApi()
-  },[]);
+    fetchMyApi();
+  }, []);
 
   return (
     <>
+      {/* Bookings */}
       <Row>
         <Col>
-          Bookings
           {loading && <Loader />}
           <Table striped bordered hover>
             <thead>
               <tr>
                 {/* <th><h2>Booking id</h2></th>
                 <th><h2>User id</h2></th> */}
-                <th><h2>Room</h2></th>
-                <th><h2>From</h2></th>
-                <th><h2>To</h2></th>
-                <th><h2>Status</h2></th>
+                <th>
+                  <h2>Room</h2>
+                </th>
+                <th>
+                  <h2>From</h2>
+                </th>
+                <th>
+                  <h2>To</h2>
+                </th>
+                <th>
+                  <h2>Status</h2>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -83,16 +88,23 @@ export function Bookings() {
                     <tr key={booking._id}>
                       {/* <td><h5>{booking._id}</h5></td>
                       <td><h5>{booking.userid}</h5></td> */}
-                      <td><h6>{booking.room}</h6></td>
-                      <td><h6>{booking.fromdate}</h6></td>
-                      <td><h6>{booking.todate}</h6></td>
-                      <td><h6>{booking.status}</h6></td>
+                      <td>
+                        <h6>{booking.room}</h6>
+                      </td>
+                      <td>
+                        <h6>{booking.fromdate}</h6>
+                      </td>
+                      <td>
+                        <h6>{booking.todate}</h6>
+                      </td>
+                      <td>
+                        <h6>{booking.status}</h6>
+                      </td>
                     </tr>
                   );
                 })}
             </tbody>
           </Table>
-          
         </Col>
       </Row>
     </>
@@ -102,7 +114,6 @@ export function Bookings() {
 export function Rooms() {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
-
 
   const [editFormData, setEditFormData] = useState({
     name: "",
@@ -114,19 +125,18 @@ export function Rooms() {
   const [edit, setEdit] = useState(null);
 
   useEffect(() => {
-    async function fetchMyApi(){
+    async function fetchMyApi() {
       try {
-        const data = (await axios.get("https://room-booking-backend.herokuapp.com/room/getallrooms")).data;
+        const data = (await axios.get("/room/getallrooms")).data;
         setRooms(data);
         setLoading(false);
       } catch (err) {
         console.log(err);
         setLoading(false);
-      
       }
     }
     fetchMyApi();
-  },[]);
+  }, []);
 
   const handleEditFormChange = (e) => {
     e.preventDefault();
@@ -154,8 +164,6 @@ export function Rooms() {
     setEditFormData(formValues);
   };
 
-
-
   async function handleEditFormSubmit(e) {
     e.preventDefault();
     const roomid = edit;
@@ -168,14 +176,11 @@ export function Rooms() {
     };
     console.warn(editedRoom);
     try {
-      const res = await axios.put(
-        `https://room-booking-backend.herokuapp.com/room/edit/${roomid}`,
-        editedRoom
-      ).data;
+      const res = await axios.put(`/room/edit/${roomid}`, editedRoom).data;
       console.log(res);
       const newrooms = [...rooms];
-      const index = rooms.findIndex((room) => room._id === roomid)
-      newrooms[index] = editedRoom
+      const index = rooms.findIndex((room) => room._id === roomid);
+      newrooms[index] = editedRoom;
       setRooms(newrooms);
       setEdit(null);
     } catch (err) {
@@ -189,14 +194,13 @@ export function Rooms() {
 
   async function handleDeleteClick(id) {
     try {
-      const result = await axios.delete(`https://room-booking-backend.herokuapp.com/room/${id}`);
-      console.log(result)
+      const result = await axios.delete(`/room/${id}`);
+      console.log(result);
       let temproom = [...rooms];
       let newroom = temproom.filter((room) => {
         return room._id !== id;
       });
       setRooms(newroom);
-     
     } catch (err) {
       console.log(err);
     }
@@ -204,10 +208,10 @@ export function Rooms() {
 
   return (
     <>
+      {/* rooms */}
       <Row>
         <Col>
           <Form onSubmit={handleEditFormSubmit}>
-            Rooms
             {loading && <Loader />}
             <Table striped bordered hover>
               <thead>
@@ -224,7 +228,7 @@ export function Rooms() {
                 {rooms.length &&
                   rooms.map((room) => {
                     return (
-                      <Fragment>
+                      <Fragment key={room._id}>
                         {edit === room._id ? (
                           <Editroom
                             editFormData={editFormData}
@@ -253,13 +257,11 @@ export function Rooms() {
 export function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  
 
   useEffect(() => {
-    async function fetchMyApi(){
+    async function fetchMyApi() {
       try {
-        const data = (await axios.get("https://room-booking-backend.herokuapp.com/user/allusers"))
-          .data;
+        const data = (await axios.get("/user/allusers")).data;
         setUsers(data);
         setLoading(false);
       } catch (err) {
@@ -267,19 +269,18 @@ export function Users() {
         setLoading(false);
       }
     }
-    fetchMyApi()
+    fetchMyApi();
   }, []);
 
   return (
     <>
+      {/* Users */}
       <Row>
         <Col>
-          Users
           {loading && <Loader />}
           <Table striped bordered hover>
             <thead>
               <tr>
-          
                 <th>Name</th>
                 <th>Email</th>
                 <th>isAdmin</th>
@@ -290,10 +291,15 @@ export function Users() {
                 users.map((user) => {
                   return (
                     <tr key={user._id}>
-              
-                      <td><h6>{user.name}</h6></td>
-                      <td><h6>{user.email}</h6></td>
-                      <td><h6>{user.isAdmin ? "Yes" : "No"}</h6></td>
+                      <td>
+                        <h6>{user.name}</h6>
+                      </td>
+                      <td>
+                        <h6>{user.email}</h6>
+                      </td>
+                      <td>
+                        <h6>{user.isAdmin ? "Yes" : "No"}</h6>
+                      </td>
                     </tr>
                   );
                 })}

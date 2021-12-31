@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container } from "react-bootstrap";
-import Form from 'react-bootstrap/Form'; 
+import Form from "react-bootstrap/Form";
 import axios from "axios";
 import Loader from "../Loader";
 import Error from "../Error";
@@ -29,11 +29,8 @@ export default function Register() {
 
       try {
         setLoading(true);
-        const result = await axios.post(
-          "https://room-booking-backend.herokuapp.com/user/register",
-          user
-        ).data;
-        console.log(result)
+        const result = await axios.post("/user/register", user).data;
+        console.log(result);
         setLoading(false);
         setSuccess(true);
         setName("");

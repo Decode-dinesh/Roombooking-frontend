@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { InputGroup } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 import axios from "axios";
 import Room from "../Room/Room";
 import Loader from "../Loader";
@@ -24,10 +24,10 @@ export default function HomeScreen() {
   const [type, setType] = useState("all");
 
   useEffect(() => {
-    async function fetchMyApi(){
+    async function fetchMyApi() {
       try {
         setLoading(true);
-        const result = (await axios.get("https://room-booking-backend.herokuapp.com/room/getallrooms")).data;
+        const result = (await axios.get("/room/getallrooms")).data;
         setRooms(result);
         setDuplicaterooms(result);
         setLoading(false);
@@ -41,12 +41,12 @@ export default function HomeScreen() {
 
   function disabledDate(current) {
     // Can not select days before today and today
-    return current && current < moment().endOf('day');
+    return current && current < moment().endOf("day");
   }
 
   function filterByDate(dates) {
-    const start =(moment(dates[0]).format("DD-MM-YYYY"));
-    const end =(moment(dates[1]).format("DD-MM-YYYY"));
+    const start = moment(dates[0]).format("DD-MM-YYYY");
+    const end = moment(dates[1]).format("DD-MM-YYYY");
     setFromdate(start);
     setTodate(end);
 
@@ -56,14 +56,8 @@ export default function HomeScreen() {
       if (rooms.currentbookings.length > 0) {
         for (var booking of rooms.currentbookings) {
           if (
-            !moment(start).isBetween(
-              booking.fromdate,
-              booking.todate
-            ) &&
-            !moment(end).isBetween(
-              booking.fromdate,
-              booking.todate
-            )
+            !moment(start).isBetween(booking.fromdate, booking.todate) &&
+            !moment(end).isBetween(booking.fromdate, booking.todate)
           ) {
             if (
               start === booking.fromdate &&
@@ -71,52 +65,53 @@ export default function HomeScreen() {
               end === booking.fromdate &&
               end === booking.todate
             ) {
-              availability = true
+              availability = true;
             }
           }
         }
       }
-      if (availability === true || rooms.currentbookings.length === 0){
+      if (availability === true || rooms.currentbookings.length === 0) {
         temprooms.push(rooms);
         console.log(temprooms);
       }
 
-
-      setRooms(temprooms)
-      
+      setRooms(temprooms);
     }
     console.log(start);
     console.log(end);
   }
 
- 
   function filterBySearch() {
+    const temprooms = duplicaterooms.filter((rooms) =>
+      rooms.name.toLowerCase().includes(searchkey.toLowerCase())
+    );
 
-    const temprooms = duplicaterooms.filter(rooms => rooms.name.toLowerCase().includes(searchkey.toLowerCase()))
-
-    setRooms(temprooms)
-
+    setRooms(temprooms);
   }
 
-  function filterByType(e){
+  function filterByType(e) {
+    setType(e);
+    if (e !== "all") {
+      const temprooms = duplicaterooms.filter(
+        (rooms) => rooms.type.toLowerCase() === e.toLowerCase()
+      );
 
-    setType(e)
-    if(e!=='all'){
-      const temprooms = duplicaterooms.filter(rooms => rooms.type.toLowerCase()=== e.toLowerCase())
-
-    setRooms(temprooms)
-    }else{
-      setRooms(duplicaterooms)
+      setRooms(temprooms);
+    } else {
+      setRooms(duplicaterooms);
     }
-    
-  };
+  }
 
   return (
     <Container>
       <Row>
         <Col className="mt-5">
           <Space>
-              <RangePicker  format="DD-MM-YYYY" onChange={filterByDate} disabledDate={disabledDate} />
+            <RangePicker
+              format="DD-MM-YYYY"
+              onChange={filterByDate}
+              disabledDate={disabledDate}
+            />
           </Space>
         </Col>
         <Col className="mt-5">
@@ -133,8 +128,13 @@ export default function HomeScreen() {
           </InputGroup>
         </Col>
         <Col className="mt-5">
-          <Form.Select value={type} onChange={(e) => {filterByType(e.target.value)}} >
-            <option value='all'>All</option>
+          <Form.Select
+            value={type}
+            onChange={(e) => {
+              filterByType(e.target.value);
+            }}
+          >
+            <option value="all">All</option>
             <option value="delux">Delux</option>
             <option value="non-delux">Non-Delux</option>
           </Form.Select>
@@ -146,13 +146,18 @@ export default function HomeScreen() {
           <Loader />
         ) : (
           <Col className="mt-2">
-          {rooms.map((room) => {
-            return (
-                <Room key={room._id} room={room} fromdate={fromdate} todate={todate} />
-                );
-              })}
-              </Col>
-        ) }
+            {rooms.map((room) => {
+              return (
+                <Room
+                  key={room._id}
+                  room={room}
+                  fromdate={fromdate}
+                  todate={todate}
+                />
+              );
+            })}
+          </Col>
+        )}
       </Row>
     </Container>
   );

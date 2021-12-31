@@ -38,38 +38,31 @@ export function MyBookings() {
   const user = JSON.parse(localStorage.getItem("currentUser"));
   const [bookings, setBookings] = useState([]);
 
-
   useEffect(() => {
-    async function fetchMyApi(){
+    async function fetchMyApi() {
       try {
-      
-        const data = (await axios.post("https://room-booking-backend.herokuapp.com/bookings/getbookingbyuserid", {userid: user._id})).data;
+        const data = (
+          await axios.post("/bookings/getbookingbyuserid", { userid: user._id })
+        ).data;
         setBookings(data);
-      
       } catch (err) {
         console.log(err);
-      
-  
       }
     }
     fetchMyApi();
-
-  },[user]);
+  }, [user]);
 
   async function cancelBooking(bookingid, roomid) {
     try {
-      
       const data = (
-        await axios.post("https://room-booking-backend.herokuapp.com/bookings/cancelbooking", {
+        await axios.post("/bookings/cancelbooking", {
           bookingid,
           roomid,
         })
       ).data;
       console.log(data);
-  
     } catch (err) {
       console.log(err);
-    
     }
   }
 
@@ -77,7 +70,6 @@ export function MyBookings() {
     <Container>
       <Row>
         <Col>
-      
           {bookings &&
             bookings.map((booking) => {
               return (
