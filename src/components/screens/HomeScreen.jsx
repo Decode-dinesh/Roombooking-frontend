@@ -66,10 +66,10 @@ export default function HomeScreen() {
             )
           ) {
             if (
-              start == booking.fromdate &&
-              start == booking.todate &&
-              end == booking.fromdate &&
-              end == booking.todate
+              start === booking.fromdate &&
+              start === booking.todate &&
+              end === booking.fromdate &&
+              end === booking.todate
             ) {
               availability = true
             }
