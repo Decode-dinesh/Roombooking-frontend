@@ -61,9 +61,9 @@ export default function Editroom({
       </td>
       <td>
         <Button className="m-2" type="submit">
-          Save
+        <i class="fas fa-save"></i>
         </Button>
-        <Button onClick={handleCancelClick}>Cancel</Button>
+        <Button className="btn-danger" onClick={handleCancelClick}><i class="fas fa-window-close"></i></Button>
       </td>
     </tr>
   );

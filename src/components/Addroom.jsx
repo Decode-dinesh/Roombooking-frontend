@@ -178,7 +178,7 @@ export default function Addroom() {
           </InputGroup>
 
           <div style={{ float: "right" }}>
-            <Button variant="secondary" onClick={addroom}>
+            <Button variant="primary" onClick={addroom}>
               Add room
             </Button>{" "}
           </div>
