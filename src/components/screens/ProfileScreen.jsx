@@ -24,6 +24,7 @@ export default function ProfileScreen() {
           <br />
           <h2>Name: {user.name}</h2>
           <h2>Email: {user.email}</h2>
+          <h2>Mobile: {user.mobile}</h2>
           <h2>isAdmin: {user.isAdmin ? "Yes" : "No"}</h2>
         </TabPane>
         <TabPane tab="Bookings" key="2">
@@ -42,7 +43,7 @@ export function MyBookings() {
     async function fetchMyApi() {
       try {
         const data = (
-          await axios.post("/bookings/getbookingbyuserid", { userid: user._id })
+          await axios.post("https://room-booking-backend.herokuapp.com/bookings/getbookingbyuserid", { userid: user._id })
         ).data;
         setBookings(data);
       } catch (err) {
@@ -55,7 +56,7 @@ export function MyBookings() {
   async function cancelBooking(bookingid, roomid) {
     try {
       const data = (
-        await axios.post("/bookings/cancelbooking", {
+        await axios.post("https://room-booking-backend.herokuapp.com/bookings/cancelbooking", {
           bookingid,
           roomid,
         })
@@ -89,12 +90,14 @@ export function MyBookings() {
                   </p>
                   <p>
                     <b>Status :</b>{" "}
+                    
                     {booking.status === "booked" ? (
                       <Badge bg="success">Confirmed</Badge>
                     ) : (
                       <Badge bg="danger">Cancelled</Badge>
                     )}
                   </p>
+                  {}
 
                   {booking.status !== "Cancelled" && (
                     <div>

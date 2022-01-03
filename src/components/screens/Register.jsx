@@ -29,7 +29,7 @@ export default function Register() {
 
       try {
         setLoading(true);
-        const result = await axios.post("/user/register", user).data;
+        const result = await axios.post("https://room-booking-backend.herokuapp.com/user/register", user).data;
         console.log(result);
         setLoading(false);
         setSuccess(true);

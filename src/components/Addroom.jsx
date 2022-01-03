@@ -36,7 +36,7 @@ export default function Addroom() {
 
     try {
       setLoading(true);
-      const result = await axios.post("/room/addroom", newroom).data;
+      const result = await axios.post("https://room-booking-backend.herokuapp.com/room/addroom", newroom).data;
       setLoading(false);
       setSuccess(true);
       setName("");

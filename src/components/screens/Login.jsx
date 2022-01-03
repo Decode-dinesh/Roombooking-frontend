@@ -19,7 +19,7 @@ export default function Login() {
     };
     try {
       setLoading(true);
-      const result = (await axios.post("/user/login", user)).data;
+      const result = (await axios.post("https://room-booking-backend.herokuapp.com/user/login", user)).data;
       setLoading(false);
 
       localStorage.setItem("currentUser", JSON.stringify(result));
