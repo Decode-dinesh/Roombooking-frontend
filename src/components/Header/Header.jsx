@@ -12,14 +12,17 @@ export default function Header() {
   return (
     <>
       {user ? (
-        
-          <Navbar  bg="dark" variant="dark">
-            <Container>
-              <Navbar.Brand href="/home">Room-BooKing</Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-              <Dropdown className="mx-5">
-                  <Dropdown.Toggle variant="success" id="dropdown-menu-responsive-1">
+        <Navbar bg="dark" variant="dark">
+          <Container>
+            <Navbar.Brand href="/home">Room-BooKing</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="justify-content-end" style={{ width: "100%" }}>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="success"
+                    id="dropdown-menu-responsive-1"
+                  >
                     {user.name}
                   </Dropdown.Toggle>
 
@@ -35,17 +38,17 @@ export default function Header() {
                     )}
                   </Dropdown.Menu>
                 </Dropdown>
-              </Navbar.Collapse>
-            </Container>
-          </Navbar>
-        
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
       ) : (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar expand="lg" bg="dark" variant="dark">
           <Container>
             <Navbar.Brand href="#">Room-BooKing</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav>
+              <Nav className="justify-content-end" style={{ width: "100%" }}>
                 <Nav.Link href="/register">Register</Nav.Link>
                 <Nav.Link href="/">login</Nav.Link>
               </Nav>
