@@ -64,9 +64,20 @@ export default function Login() {
           />
         </Form.Group>
 
-        <Button variant="primary" onClick={login}>
-          Login
-        </Button>
+        <div className="w-50 text-center">
+          <Button variant="primary" onClick={login}>
+            Login
+          </Button>
+        </div>
+        <br />
+        <div className="w-50 text-center">
+          <Button className="m-3" variant="warning" onClick={()=> {setEmail("john@gmail.com"); setPassword("123456")}}>
+            admin Credentials
+          </Button>
+          <Button className="m-3" variant="warning" onClick={()=> {setEmail("user@gmail.com"); setPassword("123456")}}>
+            user Credentials
+          </Button>
+        </div>
       </Form>
     </Container>
   );
